@@ -26,6 +26,8 @@
     "web:start": "yarn workspace @developer-ui/web start",
     "services:start": "yarn workspace @developer-ui/services start",
     "dev": "ultra -r dev",
+    "dev:web": "ultra -r dev:web",
+    "dev:mobile": "ultra -r dev:mobile",
     "lint": "ultra -r lint:fix",
     "pretty": "ultra -r pretty",
     "test": "ultra -r test",

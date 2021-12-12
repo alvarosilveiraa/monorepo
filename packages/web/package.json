@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "yarn start",
+    "dev:web": "yarn start",
     "start": "craco start",
     "build": "craco build",
     "test": "react-scripts test --watchAll=false --passWithNoTests",

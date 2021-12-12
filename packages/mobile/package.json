@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "yarn android",
+    "dev:mobile": "yarn android",
     "android": "react-native run-android",
     "android:clean": "cd android & ./gradlew clean",
     "ios": "react-native run-ios",
