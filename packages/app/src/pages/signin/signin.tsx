@@ -1,10 +1,15 @@
 import React from 'react';
 import {Button} from 'react-native';
+import {UsersServiceEnum} from '@developer-ui/app';
 import {View} from '~/app/components';
-import {useNavigate} from '~/app/hooks';
+import {useNavigate, useService} from '~/app/hooks';
 
 export const SigninPage = () => {
   const navigate = useNavigate();
+
+  const {data, error, loading} = useService({service: UsersServiceEnum.GetUser, skip: false});
+
+  console.log(data, error, loading);
 
   return (
     <View width="100%" height="100%" alignItems="center" justifyContent="center">

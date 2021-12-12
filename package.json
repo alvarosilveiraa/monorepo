@@ -24,6 +24,7 @@
     "android:clean": "yarn workspace @developer-ui/mobile android:clean",
     "ios:start": "yarn workspace @developer-ui/mobile ios",
     "web:start": "yarn workspace @developer-ui/web start",
+    "services:start": "yarn workspace @developer-ui/services start",
     "lint": "ultra -r lint:fix",
     "pretty": "ultra -r pretty",
     "test": "ultra -r test",
