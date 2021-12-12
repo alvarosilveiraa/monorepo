@@ -1,0 +1,42 @@
+{
+  "name": "monorepo",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@react-native-async-storage/async-storage",
+      "**/react",
+      "**/react-dom",
+      "**/react-native",
+      "**/react-native/**",
+      "**/react-native-codegen",
+      "**/react-native-dev-menu",
+      "**/react-native-macos",
+      "**/react-native-windows"
+    ]
+  },
+  "scripts": {
+    "reset": "rm -rf yarn.lock & rm -rf node_modules & rm -rf packages/**/node_modules",
+    "android:start": "yarn workspace @my-app/mobile android",
+    "android:clean": "yarn workspace @my-app/mobile android:clean",
+    "ios:start": "yarn workspace @my-app/mobile ios",
+    "web:start": "yarn workspace @my-app/web start",
+    "lint": "ultra -r lint:fix",
+    "pretty": "ultra -r pretty",
+    "test": "ultra -r test",
+    "typecheck": "ultra -r typecheck"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "@trivago/prettier-plugin-sort-imports": "^3.1.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2",
+    "typescript": "4.4.2",
+    "ultra-runner": "^3.10.5"
+  }
+}
