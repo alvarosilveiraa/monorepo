@@ -9,7 +9,9 @@ export const SigninPage = () => {
 
   const {data, error, loading} = useService({service: UsersServiceEnum.GetUser, skip: false});
 
-  console.log(data, error, loading);
+  console.log(data, loading);
+
+  console.log(JSON.stringify(error, null, 2));
 
   return (
     <View width="100%" height="100%" alignItems="center" justifyContent="center">

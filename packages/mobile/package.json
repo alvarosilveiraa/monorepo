@@ -19,7 +19,8 @@
     "@developer-ui/app": "*",
     "@react-native-async-storage/async-storage": "^1.15.7",
     "react": "17.0.2",
-    "react-native": "0.65.1"
+    "react-native": "0.65.1",
+    "react-native-dotenv": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
