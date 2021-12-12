@@ -5,7 +5,7 @@ import {
   ViewPropsAndroid,
   ViewPropsIOS,
 } from 'react-native';
-import {SpringStyleType} from '../../typings';
+import {SpringStyleType} from '~/app/typings';
 
 export type SpringViewType = ViewPropsAndroid &
   ViewPropsIOS &

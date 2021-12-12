@@ -1,4 +1,4 @@
-import {RouteFCType, RouteType} from '../../typings';
+import {RouteFCType, RouteType} from '~/app/typings';
 
 export const useRouter = () => {
   const getNewLayouts = (

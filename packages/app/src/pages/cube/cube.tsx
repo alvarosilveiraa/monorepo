@@ -1,6 +1,6 @@
 import React from 'react';
-import {SpringView, View} from '../../components';
-import {useSpring} from '../../hooks';
+import {SpringView, View} from '~/app/components';
+import {useSpring} from '~/app/hooks';
 
 export const CubePage = () => {
   const [styles1] = useSpring({

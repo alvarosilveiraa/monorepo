@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "@developer-ui/app": ["app/src/index.ts"],
+      "~/app/*": ["app/src/*"],
+      "~/web/*": ["web/src/*"],
+      "~/mobile/*": ["mobile/src/*"]
+    },
     "jsx": "react-jsx",
     "lib": ["DOM", "DOM.Iterable", "esnext"],
     "module": "esnext",
@@ -15,6 +22,5 @@
     "strict": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"]
+  }
 }

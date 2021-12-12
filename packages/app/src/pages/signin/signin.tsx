@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from 'react-native';
-import {View} from '../../components';
-import {useNavigate} from '../../hooks';
+import {View} from '~/app/components';
+import {useNavigate} from '~/app/hooks';
 
 export const SigninPage = () => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import React from 'react';
 import {NativeRouter, Route, Routes} from 'react-router-native';
-import {RouteType} from '../../typings';
+import {RouteType} from '~/app/typings';
 import {RouterLayouts} from './router-layouts';
 import {useRouter} from './router.hook';
 import {RouterType} from './router.type';

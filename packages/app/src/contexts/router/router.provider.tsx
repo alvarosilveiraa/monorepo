@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {RouteType} from '../../typings';
+import {RouteType} from '~/app/typings';
 import {Router} from './router';
 import {RouterContext} from './router.context';
 import {RouterProviderType} from './router.type';
