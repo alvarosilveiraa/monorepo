@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "dev": "yarn start",
     "start": "craco start",
     "build": "craco build",
     "test": "react-scripts test --watchAll=false --passWithNoTests",
