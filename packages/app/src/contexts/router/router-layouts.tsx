@@ -1,20 +1,10 @@
-import React, {useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
+import React from 'react';
+import {useRouterLayouts} from './router-layouts.hook';
 import {RouterRedirect} from './router.redirect';
 import {RouterLayoutsType} from './router.type';
 
 export const RouterLayouts = ({route, layouts = [], onRoute}: RouterLayoutsType) => {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (route && location) {
-      if (route.title) {
-        document.title = route.title;
-      }
-
-      onRoute?.(route);
-    }
-  }, [route, location]);
+  useRouterLayouts({route, onRoute});
 
   if (route?.redirect) {
     return <RouterRedirect path={route.redirect} />;

@@ -1,12 +1,17 @@
-// import {getRouteTitle} from './contexts';
-import {CubePage} from './pages';
+import {CubePage, SigninPage} from './pages';
 import {RouteType} from './typings';
 
 export const routes: RouteType[] = [
   {
-    name: 'Cube',
+    name: 'Signin',
     path: '/',
-    // title: getRouteTitle('Cube'),
+    title: 'Signin',
+    Component: SigninPage,
+  },
+  {
+    name: 'Cube',
+    path: '/cube',
+    title: 'Cube',
     Component: CubePage,
   },
   {
