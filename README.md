@@ -16,7 +16,7 @@ yarn dev:web
 
 ## Demonstrativo
 
-![Demo](https://github.com/alvarosilveiraa/monorepo/tree/main/.github/2021-12-13 09-17-45.gif)
+![Demo](https://github.com/alvarosilveiraa/monorepo/blob/main/.github/2021-12-13%2009-17-45.gif)
 
 ## Configurando Alias
 
