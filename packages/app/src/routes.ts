@@ -4,7 +4,7 @@ import {RouteType} from './typings';
 export const routes: RouteType[] = [
   {
     name: 'Signin',
-    path: '/',
+    path: '/signin',
     title: 'Signin',
     Component: SigninPage,
   },
@@ -17,6 +17,6 @@ export const routes: RouteType[] = [
   {
     name: 'Redirect',
     path: '/*',
-    redirect: '/',
+    redirect: '/signin',
   },
 ];

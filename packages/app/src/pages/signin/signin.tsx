@@ -17,9 +17,9 @@ export const SigninPage = () => {
     <View width="100%" height="100%" alignItems="center" justifyContent="center">
       <Button
         onPress={() => navigate('/cube')}
-        title="Learn More"
+        title="Entrar"
         color="#841584"
-        accessibilityLabel="Learn more about this purple button"
+        accessibilityLabel="Butão roxo para entrar no site"
       />
     </View>
   );
