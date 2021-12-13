@@ -14,6 +14,10 @@ yarn
 yarn dev:web
 ```
 
+## Demonstrativo
+
+![Demo](https://github.com/alvarosilveiraa/monorepo/tree/main/.github/2021-12-13 09-17-45.gif)
+
 ## Configurando Alias
 
 Modifique os arquivos abaixo para inserir ou remover alias:
