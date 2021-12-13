@@ -20,7 +20,7 @@ yarn dev:web
 
 ## Configurando Alias
 
-Modifique os arquivos abaixo para inserir ou remover alias:
+Modifique os arquivos abaixo para inserir, modificar ou remover alias:
 
 - `packages/app/tsconfig.base.json`
 - `packages/mobile/babel.config.js`
@@ -55,4 +55,4 @@ Modifique os arquivos abaixo para inserir ou remover alias:
 - **_[cors.](https://www.npmjs.com/package/cors)_** para habilitar requisições cors
 - **_[express.](https://www.npmjs.com/package/express)_** para servir controlar e executar rotas de api
 - **_[dotenv-cli.](https://www.npmjs.com/package/dotenv-cli)_** para utilizar arquivo .env com as variaveis de ambiente
-- **_[nodemon.](https://www.npmjs.com/package/nodemon)_** para iniciar e controlar refreshs do arquivo de execução do servidor
+- **_[nodemon.](https://www.npmjs.com/package/nodemon)_** para iniciar execução e controlar modificações dos arquivos
