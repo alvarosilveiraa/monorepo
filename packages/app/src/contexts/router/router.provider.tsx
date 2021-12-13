@@ -9,7 +9,7 @@ export const RouterProvider = ({routes = []}: RouterProviderType) => {
 
   return (
     <RouterContext.Provider value={{route}}>
-      <Router routes={routes} onRoute={setRoute} />
+      <Router route={route} routes={routes} onRoute={setRoute} />
     </RouterContext.Provider>
   );
 };

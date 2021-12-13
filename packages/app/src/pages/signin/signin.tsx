@@ -7,7 +7,7 @@ import {useNavigate, useService} from '~/app/hooks';
 export const SigninPage = () => {
   const navigate = useNavigate();
 
-  const {data, error, loading} = useService({service: UsersServiceEnum.GetUser, skip: false});
+  const {data, error, loading} = useService({service: UsersServiceEnum.GetUser, skip: true});
 
   console.log(data, loading);
 

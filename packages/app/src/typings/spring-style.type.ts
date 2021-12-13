@@ -82,7 +82,7 @@ export type SpringShadowStyleIOSType = {
 };
 
 export type SpringTransformStyleType = {
-  transform?: SpringTransformType;
+  transform?: SpringTransformType | SpringValue<string>;
 };
 
 export type SpringStyleType = SpringFlexStyleType &
@@ -112,7 +112,7 @@ export type SpringStyleType = SpringFlexStyleType &
     borderTopStartRadius?: number;
     borderTopWidth?: number;
     borderWidth?: number;
-    opacity?: number;
+    opacity?: number | SpringValue<number>;
     testID?: string;
     elevation?: number;
   };

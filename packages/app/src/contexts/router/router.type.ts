@@ -1,6 +1,7 @@
 import {RouteFCType, RouteType} from '~/app/typings';
 
 export type RouterType = {
+  route: RouteType | null;
   routes: RouteType[];
   onRoute?: (route: RouteType) => void;
 };

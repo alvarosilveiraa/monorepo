@@ -5,6 +5,6 @@ import {SpringViewType} from './spring-view.type';
 
 const Animated = animated(View);
 
-const SpringView = (props: SpringViewType) => <Animated {...props} />;
+const SpringView = (props?: SpringViewType) => <Animated {...props} />;
 
 export default SpringView;

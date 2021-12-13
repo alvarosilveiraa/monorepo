@@ -1,6 +1,8 @@
+import {ReactNode} from 'react';
 import {
   AccessibilityProps,
   GestureResponderHandlers,
+  LayoutChangeEvent,
   Touchable,
   ViewPropsAndroid,
   ViewPropsIOS,
@@ -14,4 +16,6 @@ export type SpringViewType = ViewPropsAndroid &
   AccessibilityProps &
   SpringStyleType & {
     style?: SpringStyleType;
+    children?: ReactNode;
+    onLayout?: (event: LayoutChangeEvent) => void;
   };

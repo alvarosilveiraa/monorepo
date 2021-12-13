@@ -1,38 +1,26 @@
 import React from 'react';
-import {NativeRouter, Route, Routes} from 'react-router-native';
-import {RouteType} from '~/app/typings';
-import {RouterLayouts} from './router-layouts';
+import {NativeRouter, Routes} from 'react-router-native';
+import {SpringView} from '~/app/components';
 import {useRouter} from './router.hook';
 import {RouterType} from './router.type';
 
-export const Router = ({routes, onRoute}: RouterType) => {
-  const {getRouteLayouts} = useRouter();
-
-  const renderRoute = (route: RouteType, prevRoute?: RouteType) => {
-    const {path, name} = route;
-
-    const NewRoutes: JSX.Element[] = [];
-
-    NewRoutes.push(
-      <Route
-        key={`route-${name}`}
-        path={path}
-        element={
-          <RouterLayouts
-            route={route}
-            layouts={getRouteLayouts(route, prevRoute)}
-            onRoute={onRoute}
-          />
-        }
-      />,
-    );
-
-    return NewRoutes;
-  };
+export const Router = ({route, routes, onRoute}: RouterType) => {
+  const {setLayout, renderRoute, getTransitions} = useRouter(route, onRoute);
 
   return (
     <NativeRouter>
-      <Routes>{routes.map(route => renderRoute(route))}</Routes>
+      {getTransitions()((styles, item) => (
+        <SpringView
+          key={item?.name}
+          style={styles}
+          position="absolute"
+          width="100%"
+          height="100%"
+          onLayout={e => setLayout(e.nativeEvent.layout)}
+        >
+          <Routes>{routes.map(newRoute => renderRoute(newRoute))}</Routes>
+        </SpringView>
+      ))}
     </NativeRouter>
   );
 };
