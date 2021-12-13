@@ -1,7 +1,7 @@
 import {ViewProps} from 'react-native';
-import {SpringStyleType} from '~/app/typings';
+import {SpringViewStyleType} from '~/app/typings';
 
 export type SpringViewType = ViewProps &
-  SpringStyleType & {
-    style?: SpringStyleType;
+  SpringViewStyleType & {
+    style?: SpringViewStyleType;
   };

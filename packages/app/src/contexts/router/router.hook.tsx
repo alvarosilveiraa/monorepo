@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import {LayoutRectangle} from 'react-native';
 import {Route} from 'react-router-dom';
 import {useTransition} from '~/app/hooks';
-import {RouteFCType, RouteType, SpringStyleType} from '~/app/typings';
+import {RouteFCType, RouteType, SpringViewStyleType} from '~/app/typings';
 import {RouterLayouts} from './router-layouts';
 
 export const useRouter = (route: RouteType | null, onRoute?: (route: RouteType) => void) => {
@@ -87,7 +87,7 @@ export const useRouter = (route: RouteType | null, onRoute?: (route: RouteType) 
   }, []);
 
   const getTransitions = useCallback(() => {
-    const transitions = useTransition<RouteType | null, SpringStyleType>(route, {
+    const transitions = useTransition<RouteType | null, SpringViewStyleType>(route, {
       from: {opacity: 0, translateX: getPercentage(100, layout?.width)},
       enter: {opacity: 1, translateX: getPercentage(0, layout?.width)},
       leave: {opacity: 0, translateX: getPercentage(-50, layout?.width)},

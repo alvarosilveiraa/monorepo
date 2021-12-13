@@ -1,4 +1,4 @@
-import {ViewType} from './view.type';
+import {ViewType} from '~/app/typings';
 
 export const useView = ({
   alignContent,
@@ -82,7 +82,7 @@ export const useView = ({
   width,
   zIndex,
   ...props
-}: ViewType) => {
+}: ViewType = {}) => {
   const styles = {
     alignContent,
     alignItems,
