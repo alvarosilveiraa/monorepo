@@ -1,5 +1,5 @@
-import {objectStyles} from '.';
 import {STYLES} from '~/app/constants';
+import {objectStyles} from './object-styles.utils';
 
 export const remapStyles = (styles?: any) => {
   const newStyles = objectStyles(styles);

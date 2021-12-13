@@ -1,10 +1,12 @@
 import {RouteFCType, RouteType, SpringViewStyleType} from '~/app/typings';
 
+export type RouterTransitionType = 'none' | 'simple';
+
 export type RouterType = {
   route: RouteType | null;
   routes: RouteType[];
   onRoute?: (route: RouteType) => void;
-  useTransition?: boolean;
+  transition?: RouterTransitionType;
 };
 
 export type RouterContextType = {
@@ -13,6 +15,7 @@ export type RouterContextType = {
 
 export type RouterProviderType = {
   routes?: RouteType[];
+  transition?: RouterTransitionType;
 };
 
 export type RouterLayoutsType = {

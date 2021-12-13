@@ -25,5 +25,3 @@ export const objectStyles = (styles?: any) => {
 
   return styles;
 };
-
-export const remapStyles = (styles?: any) => objectStyles(styles);

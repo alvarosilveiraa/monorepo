@@ -3,8 +3,9 @@ import {LayoutRectangle} from 'react-native';
 import {Route} from 'react-router-dom';
 import {useTransition} from '~/app/hooks';
 import {RouteFCType, RouteType, SpringViewStyleType} from '~/app/typings';
+import {getPercentage} from '~/app/utils';
 import {RouterLayouts} from './router-layouts';
-import {RouterTransitionRenderType} from './router.type';
+import {RouterTransitionRenderType, RouterTransitionType} from './router.type';
 
 export const useRouter = (route: RouteType | null, onRoute?: (route: RouteType) => void) => {
   const [layout, setLayout] = useState<LayoutRectangle | null>(null);
@@ -83,31 +84,25 @@ export const useRouter = (route: RouteType | null, onRoute?: (route: RouteType) 
     return NewRoutes;
   };
 
-  const getPercentage = useCallback((percent = 100, value = 100) => {
-    return (percent * value) / 100;
-  }, []);
-
-  const getTransitions = useCallback(
-    (enabled = false) => {
-      if (!enabled) {
+  const getTransition = useCallback(
+    (transition: RouterTransitionType = 'none') => {
+      if (transition === 'none') {
         return (render: RouterTransitionRenderType) => render();
       }
 
-      const transitions = useTransition<RouteType | null, SpringViewStyleType>(route, {
+      return useTransition<RouteType | null, SpringViewStyleType>(route, {
         from: {opacity: 0, translateX: getPercentage(100, layout?.width)},
         enter: {opacity: 1, translateX: getPercentage(0, layout?.width)},
         leave: {opacity: 0, translateX: getPercentage(-50, layout?.width)},
       });
-
-      return transitions;
     },
-    [route, layout, getPercentage],
+    [route, layout],
   );
 
   return {
     layout,
     setLayout,
     renderRoute,
-    getTransitions,
+    getTransition,
   };
 };
