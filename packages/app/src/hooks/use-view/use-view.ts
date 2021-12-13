@@ -1,5 +1,5 @@
 import {ViewType} from '~/app/typings';
-import {useStyles} from '../use-styles';
+import {objectStyles, remapStyles} from '~/app/utils';
 
 export const useView = ({
   alignContent,
@@ -164,12 +164,13 @@ export const useView = ({
     transform,
     width,
     zIndex,
+    ...objectStyles(style),
   };
 
-  const viewStyle = useStyles(style);
-
-  return {
-    style: [styles, viewStyle],
+  const newProps = {
     ...props,
+    style: remapStyles(styles),
   };
+
+  return newProps;
 };

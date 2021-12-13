@@ -23,6 +23,11 @@ export const CubePage = () => {
     config: {duration: 200},
   }));
 
+  const [opacityStyles, opacityApi] = useSpring<SpringViewStyleType>(() => ({
+    opacity: 0,
+    config: {duration: 200},
+  }));
+
   const startAnimation = useCallback(
     async (width: number, height: number) => {
       const greaterLayout = width > height ? width : height;
@@ -32,8 +37,12 @@ export const CubePage = () => {
       layoutApi.start({width: greaterLayout, height: greaterLayout});
 
       borderRadiusApi.start({borderRadius: 0});
+
+      await new Promise(resolve => setTimeout(resolve, 400));
+
+      opacityApi.start({opacity: 1});
     },
-    [rotateApi, layoutApi, borderRadiusApi],
+    [rotateApi, layoutApi, borderRadiusApi, opacityApi],
   );
 
   useEffect(() => {
@@ -55,6 +64,14 @@ export const CubePage = () => {
       <SpringView
         style={{...rotateStyles, ...layoutStyles, ...borderRadiusStyles}}
         backgroundColor="purple"
+      />
+
+      <SpringView
+        style={{...opacityStyles, top: 0, left: 0}}
+        position="absolute"
+        width={300}
+        height="100%"
+        backgroundColor="#1a1a1a"
       />
     </View>
   );

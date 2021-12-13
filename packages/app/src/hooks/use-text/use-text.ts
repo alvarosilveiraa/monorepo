@@ -1,5 +1,6 @@
 import {useView} from '~/app/hooks';
 import {TextType} from '~/app/typings';
+import {objectStyles, remapStyles} from '~/app/utils';
 
 export const useText = ({
   color,
@@ -17,9 +18,9 @@ export const useText = ({
   textShadowOffset,
   textShadowRadius,
   textTransform,
-  ...props
+  ...others
 }: TextType = {}) => {
-  const viewProps = useView(props);
+  const {style, ...props} = useView(others);
 
   const styles = {
     color,
@@ -37,10 +38,11 @@ export const useText = ({
     textShadowOffset,
     textShadowRadius,
     textTransform,
+    ...objectStyles(style),
   };
 
   return {
-    ...viewProps,
-    style: [styles, ...viewProps.style],
+    ...props,
+    style: remapStyles(styles),
   };
 };

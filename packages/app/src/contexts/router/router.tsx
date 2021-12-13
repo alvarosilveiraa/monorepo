@@ -4,12 +4,12 @@ import {SpringView} from '~/app/components';
 import {useRouter} from './router.hook';
 import {RouterType} from './router.type';
 
-export const Router = ({route, routes, onRoute}: RouterType) => {
+export const Router = ({route, routes, onRoute, useTransition}: RouterType) => {
   const {setLayout, renderRoute, getTransitions} = useRouter(route, onRoute);
 
   return (
     <BrowserRouter>
-      {getTransitions()((styles, item) => (
+      {getTransitions(useTransition)((styles, item) => (
         <SpringView
           key={item?.name}
           style={styles}
