@@ -1,4 +1,5 @@
 import {ViewType} from '~/app/typings';
+import {useStyles} from '../use-styles';
 
 export const useView = ({
   alignContent,
@@ -165,8 +166,10 @@ export const useView = ({
     zIndex,
   };
 
+  const viewStyle = useStyles(style);
+
   return {
-    style: [styles, style],
+    style: [styles, viewStyle],
     ...props,
   };
 };
