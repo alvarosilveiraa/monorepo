@@ -1,6 +1,6 @@
 import React from 'react';
-import {animated} from '@react-spring/web';
-import {ScrollView} from '../scroll-view';
+import {animated} from '@react-spring/native';
+import {ScrollView} from '../../core/scroll-view';
 import {SpringScrollViewType} from './spring-scroll-view.type';
 
 const Animated = animated(ScrollView);
