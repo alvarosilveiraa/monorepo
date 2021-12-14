@@ -1,78 +1,38 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {LayoutRectangle} from 'react-native';
-import {SpringViewStyleType} from '@developer-ui/app';
+import React from 'react';
+import {Button} from 'react-native';
+import {AnimationEnum} from '@developer-ui/app';
 import {SpringView, View} from '~/app/components';
-import {useSpring} from '~/app/hooks';
+import {useAnimation, useNavigate} from '~/app/hooks';
 
-export const CubePage = () => {
-  const [layout, setLayout] = useState<LayoutRectangle | null>(null);
+export const CubePage = ({route, children}: any) => {
+  const navigate = useNavigate();
+  const {onLayout, renderTransition} = useAnimation(AnimationEnum.TranslateX, route);
 
-  const [rotateStyles, rotateApi] = useSpring<SpringViewStyleType>(() => ({
-    rotate: 0,
-    config: {duration: 400},
-  }));
-
-  const [layoutStyles, layoutApi] = useSpring<SpringViewStyleType>(() => ({
-    width: 0,
-    height: 0,
-    config: {duration: 400},
-  }));
-
-  const [borderRadiusStyles, borderRadiusApi] = useSpring<SpringViewStyleType>(() => ({
-    borderRadius: 1000,
-    config: {duration: 200},
-  }));
-
-  const [opacityStyles, opacityApi] = useSpring<SpringViewStyleType>(() => ({
-    opacity: 0,
-    config: {duration: 200},
-  }));
-
-  const startAnimation = useCallback(
-    async (width: number, height: number) => {
-      const greaterLayout = width > height ? width : height;
-
-      rotateApi.start({rotate: 360});
-
-      layoutApi.start({width: greaterLayout, height: greaterLayout});
-
-      borderRadiusApi.start({borderRadius: 0});
-
-      await new Promise(resolve => setTimeout(resolve, 400));
-
-      opacityApi.start({opacity: 1});
-    },
-    [rotateApi, layoutApi, borderRadiusApi, opacityApi],
-  );
-
-  useEffect(() => {
-    if (layout) {
-      const {width, height} = layout;
-
-      startAnimation(width, height);
+  const renderContent = () => {
+    if (children) {
+      return children;
     }
-  }, [layout, startAnimation]);
+
+    return <Button onPress={() => navigate('/cube/home')} title="CubeHome" color="purple" />;
+  };
 
   return (
-    <View
-      width="100%"
-      height="100%"
-      alignItems="center"
-      justifyContent="center"
-      onLayout={e => setLayout(e.nativeEvent.layout)}
-    >
-      <SpringView
-        style={{...rotateStyles, ...layoutStyles, ...borderRadiusStyles}}
-        backgroundColor="purple"
-      />
+    <View width="100%" height="100%">
+      <View width="100%" height={56} backgroundColor="purple" />
 
-      <SpringView
-        style={{...opacityStyles, top: 0, left: 0}}
-        position="absolute"
-        width={300}
-        height="100%"
-        backgroundColor="#1a1a1a"
-      />
+      {renderTransition((styles, item) => (
+        <SpringView
+          key={item.name}
+          style={styles}
+          width="100%"
+          height="100%"
+          alignItems="center"
+          justifyContent="center"
+          onLayout={onLayout}
+        >
+          {renderContent()}
+        </SpringView>
+      ))}
     </View>
   );
 };

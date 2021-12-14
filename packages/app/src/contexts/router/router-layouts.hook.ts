@@ -6,7 +6,7 @@ export const useRouterLayouts = ({route, onRoute}: RouterLayoutsType) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (route && location) {
+    if (location) {
       if (route.title) {
         document.title = route.title;
       }

@@ -1,4 +1,5 @@
 import {FC} from 'react';
+import {AnimationEnum} from './';
 
 export type RouteFCType = {
   Function: FC<any>;
@@ -16,4 +17,5 @@ export type RouteType = {
   layout?: RouteFCType;
   Layout?: FC<any>;
   redirect?: string;
+  animation?: AnimationEnum;
 };

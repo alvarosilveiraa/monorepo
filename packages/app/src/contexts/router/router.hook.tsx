@@ -1,108 +1,68 @@
-import React, {useCallback, useState} from 'react';
-import {LayoutRectangle} from 'react-native';
+import React from 'react';
 import {Route} from 'react-router-dom';
-import {useTransition} from '~/app/hooks';
-import {RouteFCType, RouteType, SpringViewStyleType} from '~/app/typings';
-import {getPercentage} from '~/app/utils';
+import {RouteFCType, RouteType} from '~/app/typings';
+import {RouterAnimation} from './router-animation';
 import {RouterLayouts} from './router-layouts';
-import {RouterTransitionRenderType, RouterTransitionType} from './router.type';
 
 export const useRouter = (route: RouteType | null, onRoute?: (route: RouteType) => void) => {
-  const [layout, setLayout] = useState<LayoutRectangle | null>(null);
-
-  const getNewLayouts = (
-    {component, Component, layouts = [], Layouts = [], layout, Layout}: RouteType,
-    type: 'lower' | 'upper' | 'both' = 'both',
-    hasComponent = true,
-  ) => {
+  const getRouteLayouts = ({
+    component,
+    Component,
+    layouts = [],
+    Layouts = [],
+    layout,
+    Layout,
+  }: RouteType) => {
     const newLayouts: RouteFCType[] = [];
 
-    if ((type === 'lower' || type === 'both') && component && hasComponent) {
+    if (component) {
       newLayouts.push(component);
     }
 
-    if ((type === 'upper' || type === 'both') && Component && hasComponent) {
+    if (Component) {
       newLayouts.push({
         Function: Component,
       });
     }
 
-    if (type === 'lower' || type === 'both') {
-      if (layouts.length) {
-        newLayouts.push(...layouts);
-      }
-
-      if (layout) {
-        newLayouts.push(layout);
-      }
+    if (layouts.length) {
+      newLayouts.push(...layouts);
     }
 
-    if (type === 'upper' || type === 'both') {
-      if (Layouts.length) {
-        newLayouts.push(...Layouts.map(Function => ({Function})));
-      }
+    if (layout) {
+      newLayouts.push(layout);
+    }
 
-      if (Layout) {
-        newLayouts.push({
-          Function: Layout,
-        });
-      }
+    if (Layouts.length) {
+      newLayouts.push(...Layouts.map(Function => ({Function})));
+    }
+
+    if (Layout) {
+      newLayouts.push({
+        Function: Layout,
+      });
     }
 
     return newLayouts;
   };
 
-  const getRouteLayouts = (route: RouteType, prevRoute?: RouteType) => {
-    const prevLayouts = prevRoute ? getNewLayouts(prevRoute, 'both', false) : [];
-
-    const newLayouts = getNewLayouts(route);
-
-    newLayouts.push(...prevLayouts);
-
-    return newLayouts;
-  };
-
-  const renderRoute = (newRoute: RouteType, prevRoute?: RouteType) => {
+  const renderRoute = (newRoute: RouteType) => {
     const {path, name} = newRoute;
 
-    const NewRoutes: JSX.Element[] = [];
-
-    NewRoutes.push(
+    return (
       <Route
         key={`route-${name}`}
         path={path}
         element={
-          <RouterLayouts
-            route={newRoute}
-            layouts={getRouteLayouts(newRoute, prevRoute)}
-            onRoute={onRoute}
-          />
+          <RouterAnimation route={route}>
+            <RouterLayouts route={newRoute} layouts={getRouteLayouts(newRoute)} onRoute={onRoute} />
+          </RouterAnimation>
         }
-      />,
+      />
     );
-
-    return NewRoutes;
   };
 
-  const getTransition = useCallback(
-    (transition: RouterTransitionType = 'none') => {
-      if (transition === 'none') {
-        return (render: RouterTransitionRenderType) => render();
-      }
-
-      return useTransition<RouteType | null, SpringViewStyleType>(route, {
-        from: {opacity: 0, translateX: getPercentage(100, layout?.width)},
-        enter: {opacity: 1, translateX: getPercentage(0, layout?.width)},
-        leave: {opacity: 0, translateX: getPercentage(-50, layout?.width)},
-      });
-    },
-    [route, layout],
-  );
-
   return {
-    layout,
-    setLayout,
     renderRoute,
-    getTransition,
   };
 };

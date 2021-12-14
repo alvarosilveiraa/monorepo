@@ -21,12 +21,12 @@ export const RouterLayouts = ({route, layouts = [], onRoute}: RouterLayoutsType)
 
     const Function = () => {
       if (!PrevComponent) {
-        return <NextComponent {...nextProps} />;
+        return <NextComponent {...nextProps} route={route} />;
       }
 
       return (
-        <NextComponent {...nextProps}>
-          <PrevComponent {...prevProps} />
+        <NextComponent {...nextProps} route={route}>
+          <PrevComponent {...prevProps} route={route} />
         </NextComponent>
       );
     };
@@ -37,5 +37,5 @@ export const RouterLayouts = ({route, layouts = [], onRoute}: RouterLayoutsType)
     };
   });
 
-  return <Layout.Function {...Layout.props} />;
+  return <Layout.Function {...Layout.props} route={route} />;
 };
