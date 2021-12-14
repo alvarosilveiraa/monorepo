@@ -1,12 +1,15 @@
 import React from 'react';
 import {Button} from 'react-native';
+import {useRouterContext} from '@developer-ui/app';
 import {ScrollView, SpringView, View} from '~/app/components';
 import {useAnimation, useNavigate} from '~/app/hooks';
 import {AnimationEnum} from '~/app/typings';
 
-export const DashboardPage = ({route, children}: any) => {
+export const DashboardPage = ({route: initialRoute, children}: any) => {
   const navigate = useNavigate();
-  const {onLayout, renderTransition} = useAnimation(AnimationEnum.TranslateX, route);
+  const {route} = useRouterContext();
+  const activeRoute = route || initialRoute;
+  const {onLayout, renderTransition} = useAnimation(AnimationEnum.TranslateX, activeRoute);
 
   const renderContent = () => {
     if (children) {
@@ -24,19 +27,22 @@ export const DashboardPage = ({route, children}: any) => {
     <View height="100%" position="relative">
       <View height={56} backgroundColor="purple" />
 
-      {renderTransition((styles, item) => (
-        <SpringView
-          key={`content-${item?.name || 'none'}`}
-          width="100%"
-          flex={1}
-          style={styles}
-          onLayout={onLayout}
-        >
-          <ScrollView flexGrow={1} alignItems="center" justifyContent="center">
-            {renderContent()}
-          </ScrollView>
-        </SpringView>
-      ))}
+      <View flex={1}>
+        {renderTransition((styles, item) => (
+          <SpringView
+            key={`content-${item?.name || 'none'}`}
+            width="100%"
+            height="100%"
+            position="absolute"
+            style={styles}
+            onLayout={onLayout}
+          >
+            <ScrollView flexGrow={1} alignItems="center" justifyContent="center">
+              {renderContent()}
+            </ScrollView>
+          </SpringView>
+        ))}
+      </View>
     </View>
   );
 };

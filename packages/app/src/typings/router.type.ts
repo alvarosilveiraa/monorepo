@@ -18,4 +18,5 @@ export type RouteType = {
   Layout?: FC<any>;
   redirect?: string;
   animation?: AnimationEnum;
+  prevRoute?: RouteType | null;
 };
