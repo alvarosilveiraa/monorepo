@@ -1,3 +1,3 @@
-export * from './cube';
-export * from './home';
+export * from './dashboard';
+export * from './dashboard-home';
 export * from './signin';

@@ -7,10 +7,10 @@ export const SigninPage = () => {
   const navigate = useNavigate();
 
   return (
-    <View width="100%" height="100%" alignItems="center" justifyContent="center">
+    <View height="100%" alignItems="center" justifyContent="center">
       <Text marginBottom={8}>Olá</Text>
 
-      <Button onPress={() => navigate('/cube')} title="Entrar" color="purple" />
+      <Button onPress={() => navigate('/dashboard')} title="Entrar" color="purple" />
     </View>
   );
 };
