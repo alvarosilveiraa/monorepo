@@ -55,7 +55,12 @@ export const useRouter = (route: RouteType | null, onRoute?: (route: RouteType) 
         path={path}
         element={
           <RouterAnimation route={route}>
-            <RouterLayouts route={newRoute} layouts={getRouteLayouts(newRoute)} onRoute={onRoute} />
+            <RouterLayouts
+              activeRoute={route}
+              route={newRoute}
+              layouts={getRouteLayouts(newRoute)}
+              onRoute={onRoute}
+            />
           </RouterAnimation>
         }
       />

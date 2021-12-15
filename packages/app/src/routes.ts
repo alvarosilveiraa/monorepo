@@ -1,4 +1,4 @@
-import {DashboardHomePage, DashboardPage, SigninPage} from './pages';
+import {DashboardHomePage, DashboardPage, DashboardTabsPage, SigninPage} from './pages';
 import {AnimationEnum, RouteType} from './typings';
 
 export const routes: RouteType[] = [
@@ -16,6 +16,23 @@ export const routes: RouteType[] = [
     Component: DashboardPage,
   },
   {
+    name: 'DashboardTabsOne',
+    path: '/dashboard/tabs/one',
+    title: 'Developer UI - Dashboard > Tabs One',
+    Component: DashboardTabsPage,
+  },
+  {
+    name: 'DashboardTabsTwo',
+    path: '/dashboard/tabs/two',
+    title: 'Developer UI - Dashboard > Tabs Two',
+    Component: DashboardTabsPage,
+  },
+  {
+    name: 'DashboardTabsRedirect',
+    path: '/dashboard/tabs/*',
+    redirect: '/dashboard/tabs/one',
+  },
+  {
     name: 'DashboardHome',
     path: '/dashboard/home',
     title: 'Developer UI - Dashboard > Home',
@@ -23,7 +40,7 @@ export const routes: RouteType[] = [
     Layout: DashboardPage,
   },
   {
-    name: 'Redirect',
+    name: 'HomeRedirect',
     path: '/*',
     redirect: '/signin',
   },

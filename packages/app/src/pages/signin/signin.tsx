@@ -8,7 +8,7 @@ export const SigninPage = () => {
 
   return (
     <View height="100%" alignItems="center" justifyContent="center">
-      <Text marginBottom={8}>Olá</Text>
+      <Text marginBottom={16}>Olá</Text>
 
       <Button onPress={() => navigate('/dashboard')} title="Entrar" color="purple" />
     </View>

@@ -6,3 +6,4 @@ export * from './spring.type';
 export * from './text.type';
 export * from './users.type';
 export * from './view.type';
+export * from './react-router.type';

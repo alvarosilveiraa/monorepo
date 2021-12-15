@@ -1,5 +1,6 @@
 import {FC} from 'react';
 import {AnimationEnum} from './';
+import {Location} from './react-router.type';
 
 export type RouteFCType = {
   Function: FC<any>;
@@ -17,6 +18,7 @@ export type RouteType = {
   layout?: RouteFCType;
   Layout?: FC<any>;
   redirect?: string;
+  location?: Location;
   animation?: AnimationEnum;
   prevRoute?: RouteType | null;
 };

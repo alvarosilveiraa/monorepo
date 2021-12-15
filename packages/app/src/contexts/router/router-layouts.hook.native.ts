@@ -24,7 +24,7 @@ export const useRouterLayouts = ({route, onRoute}: RouterLayoutsType) => {
 
   useEffect(() => {
     if (route && location) {
-      onRoute?.(route);
+      onRoute?.({...route, location});
     }
   }, [route, location]);
 };

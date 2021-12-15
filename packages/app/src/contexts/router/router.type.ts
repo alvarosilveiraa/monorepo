@@ -15,6 +15,7 @@ export type RouterProviderType = {
 };
 
 export type RouterLayoutsType = {
+  activeRoute?: RouteType | null;
   route: RouteType;
   layouts?: RouteFCType[];
   onRoute?: (route: RouteType) => void;

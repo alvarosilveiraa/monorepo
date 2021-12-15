@@ -11,7 +11,7 @@ export const useRouterLayouts = ({route, onRoute}: RouterLayoutsType) => {
         document.title = route.title;
       }
 
-      onRoute?.(route);
+      onRoute?.({...route, location});
     }
   }, [route, location]);
 };
