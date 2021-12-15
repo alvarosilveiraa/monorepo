@@ -1,3 +1,4 @@
+export * from './animation.enum';
 export * from './animation.type';
 export * from './router.type';
 export * from './scroll-view.type';
