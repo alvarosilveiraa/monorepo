@@ -10,7 +10,7 @@
     "pretty": "prettier --write ."
   },
   "dependencies": {
-    "brain.js": "1.0.0"
+    "brain.js": "1.4.10"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.8.0",

@@ -1,42 +1,13 @@
 import brain from 'brain.js';
 
-console.log(brain);
+const net = new brain.NeuralNetwork();
 
-// const net = new brain.recurrent.LSTMTimeStep({
-//   inputSize: 2,
-//   hiddenLayers: [10],
-//   outputSize: 2,
-// });
+net.train([
+  {input: {r: 0.03, g: 0.7, b: 0.5}, output: {black: 1}},
+  {input: {r: 0.16, g: 0.09, b: 0.2}, output: {white: 1}},
+  {input: {r: 0.5, g: 0.5, b: 1.0}, output: {white: 1}},
+]);
 
-// // Same test as previous, but combined on a single set
-// const trainingData = [
-//   [
-//     [1, 5],
-//     [2, 4],
-//     [3, 3],
-//     [4, 2],
-//     [5, 1],
-//   ],
-// ];
+const output = net.run({r: 1, g: 0.4, b: 0});
 
-// net.train(trainingData, { log: true, errorThresh: 0.09 });
-
-// const closeToFiveAndOne = net.run([
-//   [1, 5],
-//   [2, 4],
-//   [3, 3],
-//   [4, 2],
-// ]) as number[];
-
-// console.log(closeToFiveAndOne);
-
-// // now we're cookin' with gas!
-// const forecast = net.forecast(
-//   [
-//     [1, 5],
-//     [2, 4],
-//   ],
-//   3
-// ) as number[][];
-
-// console.log('next 3 predictions', forecast);
+console.log(output);
