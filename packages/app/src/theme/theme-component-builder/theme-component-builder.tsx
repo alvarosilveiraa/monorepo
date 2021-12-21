@@ -4,16 +4,12 @@ import {ThemeElement} from '../theme.type';
 import {ThemeComponentBuilderType} from './theme-component-builder.type';
 
 export function ThemeComponentBuilder<P>({component}: ThemeComponentBuilderType<P>) {
-  const renderChildren = (children: ThemeComponentType | ThemeComponentType[]) => {
+  const renderChildren = (children: ThemeElement | ThemeElement[]) => {
     if (!children) {
       return null;
     }
 
-    if (Array.isArray(children)) {
-      return children.map(renderComponent).filter(value => !!value);
-    }
-
-    return renderComponent(children);
+    return children;
   };
 
   const renderComponent = ({

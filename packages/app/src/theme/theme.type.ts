@@ -1,5 +1,5 @@
 import {FC, Key, ReactElement} from 'react';
-import {themeSettings} from './theme-settings';
+import {ShadowKey, themeSettings} from './theme-settings';
 
 export type ThemeSettingsType = typeof themeSettings;
 
@@ -11,9 +11,15 @@ export type ThemeElement<P = any> = {
 
 export type ThemeComponentType<P = any> = {
   as?: FC<P | any>;
-  children?: ThemeComponentType | ThemeComponentType[];
+  children?: ThemeElement | ThemeElement[];
   id: string;
   name: string;
-  props?: any;
+  props?: P;
   value?: FC<P | any> | string | null;
+};
+
+export type ThemeExtensionType = {
+  variant?: string;
+  variants?: any;
+  shadow?: ShadowKey;
 };

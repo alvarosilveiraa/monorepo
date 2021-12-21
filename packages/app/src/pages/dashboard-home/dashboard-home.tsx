@@ -9,7 +9,7 @@ export const DashboardHomePage = () => {
 
   return (
     <>
-      <Toast backgroundColor="red" marginBottom={16} />
+      <Toast>Mensagem</Toast>
 
       <Text marginBottom={16}>Home</Text>
 
