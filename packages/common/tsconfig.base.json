@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "@developer-ui/common": ["common/src/index.ts"],
+      "~/common/*": ["common/src/*"],
+      "~/services/*": ["services/src/*"]
+    },
+    "target": "es5",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
+}

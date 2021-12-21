@@ -7,7 +7,7 @@
     "dev": "yarn start",
     "dev:web": "yarn start",
     "dev:mobile": "yarn start",
-    "start": "dotenv -- nodemon src/index.ts",
+    "start": "dotenv -- nodemon src/server.ts",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
     "pretty": "prettier --write ."

@@ -9,7 +9,8 @@ module.exports = {
   bracketSpacing: false,
   printWidth: 100,
   importOrder: [
-    '^(?^@/?.*$|^~/.*$|^../.*$|^./.*$)',
+    '^react$',
+    '^(?!^react$|^@/?.*$|^~/.*$|^../.*$|^./.*$)',
     '^@(.*)$',
     '^~/(.*)$',
     '^../(.*)$',

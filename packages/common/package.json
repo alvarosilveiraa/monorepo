@@ -1,0 +1,20 @@
+{
+  "name": "@developer-ui/common",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "start:example1": "ts-node src/brain/example1.ts",
+    "lint": "eslint .",
+    "lint:fix": "yarn lint --fix",
+    "pretty": "prettier --write ."
+  },
+  "dependencies": {
+    "brain.js": "1.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^8.5.0"
+  }
+}
