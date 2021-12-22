@@ -1,2 +1,2 @@
-import './bets';
-import './users';
+import './bet';
+import './user';
