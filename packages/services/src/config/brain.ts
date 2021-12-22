@@ -1,3 +1,3 @@
-import {getNeuralNetwork} from '@developer-ui/common';
+import {getBetsNeuralNetwork} from '@developer-ui/common';
 
-export const net = getNeuralNetwork();
+export const betsNeuralNetwork = getBetsNeuralNetwork();

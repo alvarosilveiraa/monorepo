@@ -1,8 +1,8 @@
 import {Request, Response} from 'express';
-import {net} from '../config';
+import {betsNeuralNetwork} from '../config';
 
 export const postBetsPredictionController = async (req: Request, res: Response): Promise<void> => {
-  const output = net.run(req.body);
+  const output = betsNeuralNetwork.run(req.body);
 
   res.status(200).json({output});
 };

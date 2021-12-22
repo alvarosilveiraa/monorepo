@@ -1,3 +1,4 @@
+import {INeuralNetworkJSON} from 'brain.js';
 import fs from 'fs';
 import path from 'path';
 
@@ -13,7 +14,7 @@ export const getHash = (value: string) => {
   return hash;
 };
 
-export const getBets = () => {
+export const readBets = () => {
   const bets = [];
 
   const bets202107File = fs.readFileSync(path.join(__dirname, 'bets/2021-07.json'), 'utf-8');
@@ -53,4 +54,35 @@ export const getBets = () => {
   bets.push(...bets202112);
 
   return bets;
+};
+
+export const readEnglish = () => {
+  const english = [];
+
+  const englishTenseFile = fs.readFileSync(path.join(__dirname, 'english/tense.json'), 'utf-8');
+
+  const englishTense = JSON.parse(englishTenseFile);
+
+  english.push(...englishTense);
+
+  return english;
+};
+
+export const readNeuralNetwork = (dir: string) => {
+  const file = fs.readFileSync(path.join(__dirname, `${dir}/neural-network.json`), 'utf-8');
+
+  if (!file) {
+    return;
+  }
+
+  const neuralNetworkJSON: INeuralNetworkJSON = JSON.parse(file);
+
+  return neuralNetworkJSON;
+};
+
+export const writeNeuralNetwork = (dir: string, neuralNetworkJSON: INeuralNetworkJSON) => {
+  fs.writeFileSync(
+    path.join(__dirname, `${dir}/neural-network.json`),
+    JSON.stringify(neuralNetworkJSON, null, 2),
+  );
 };
