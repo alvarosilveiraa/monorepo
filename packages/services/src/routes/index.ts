@@ -1,1 +1,2 @@
+import './bets';
 import './users';

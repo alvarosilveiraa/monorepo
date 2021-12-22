@@ -13,6 +13,7 @@
     "pretty": "prettier --write ."
   },
   "dependencies": {
+    "@developer-ui/common": "*",
     "cors": "^2.8.5",
     "dotenv-cli": "^4.1.1",
     "express": "^4.17.1",
