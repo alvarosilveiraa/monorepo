@@ -4,7 +4,7 @@ import path from 'path';
 import {BrainModuleEnum} from './brain.enum';
 
 export function readData<T>(module: BrainModuleEnum) {
-  const moduleDataPath = path.join(__dirname, 'data', module);
+  const moduleDataPath = path.join(__dirname, 'modules', module, 'data');
 
   const directory = fs.readdirSync(moduleDataPath);
 
@@ -26,7 +26,7 @@ export function readData<T>(module: BrainModuleEnum) {
 }
 
 export const readNeuralNetwork = (module: BrainModuleEnum) => {
-  const moduleDataPath = path.join(__dirname, 'data', module);
+  const moduleDataPath = path.join(__dirname, 'modules', module);
 
   const file = fs.readFileSync(path.join(moduleDataPath, 'neural-network.json'), 'utf-8');
 
@@ -43,7 +43,7 @@ export const writeNeuralNetwork = (
   module: BrainModuleEnum,
   neuralNetworkJSON: INeuralNetworkJSON,
 ) => {
-  const moduleDataPath = path.join(__dirname, 'data', module);
+  const moduleDataPath = path.join(__dirname, 'modules', module);
 
   fs.writeFileSync(
     path.join(moduleDataPath, 'neural-network.json'),
