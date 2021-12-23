@@ -1,7 +1,9 @@
 import {INeuralNetworkJSON} from 'brain.js';
 import fs from 'fs';
+import {forEach, groupBy, map} from 'lodash';
 import path from 'path';
 import {BrainModuleEnum} from './brain.enum';
+import {BrainBetsModelType, BrainNeuralNetworkSettingsType} from './brain.type';
 
 export function readData<T>(module: BrainModuleEnum) {
   const moduleDataPath = path.join(__dirname, 'modules', module, 'data');
@@ -49,4 +51,38 @@ export const writeNeuralNetwork = (
     path.join(moduleDataPath, 'neural-network.json'),
     JSON.stringify(neuralNetworkJSON, null, 2),
   );
+};
+
+export const getDataBySettings = (data: any[], settings: BrainNeuralNetworkSettingsType) => {
+  const validData = data.filter(item => !!item[settings.input] && !!item[settings.output]);
+
+  if (settings.groupBy) {
+    const groupsData = groupBy(validData, settings.groupBy);
+
+    const groupData: BrainBetsModelType[] = map(groupsData, groupData => {
+      const input: any = {};
+      const output: any = {};
+
+      forEach(groupData, (item, index) => {
+        input[`${settings.groupPrefix}${index + 1}-${settings.input}`] = item[settings.input];
+
+        output[`${settings.groupPrefix}${index + 1}-${settings.output}`] =
+          item[settings.output] === 1 ? 1 : 0;
+      });
+
+      return {
+        input,
+        output,
+      };
+    });
+
+    return groupData;
+  }
+
+  const newData: BrainBetsModelType[] = validData.map(item => ({
+    input: {[settings.input]: item[settings.input]},
+    output: {[settings.output]: item[settings.output] === 1 ? 1 : 0},
+  }));
+
+  return newData;
 };

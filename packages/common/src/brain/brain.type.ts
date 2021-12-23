@@ -10,3 +10,10 @@ export type BrainBetsModelType = {
   input: BrainBetsModelInputType;
   output: BrainBetsModelOutputType;
 };
+
+export type BrainNeuralNetworkSettingsType = {
+  input: string;
+  output: string;
+  groupBy?: string;
+  groupPrefix?: string;
+};

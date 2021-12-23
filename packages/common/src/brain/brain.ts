@@ -1,8 +1,12 @@
+import {BrainNeuralNetworkSettingsType} from '.';
 import brain from 'brain.js';
 import {BrainModuleEnum} from './brain.enum';
-import {readData, readNeuralNetwork, writeNeuralNetwork} from './brain.utils';
+import {getDataBySettings, readData, readNeuralNetwork, writeNeuralNetwork} from './brain.utils';
 
-export const getNeuralNetwork = (module: BrainModuleEnum, onData?: (data: any[]) => any[]) => {
+export const getNeuralNetwork = (
+  module: BrainModuleEnum,
+  settings: BrainNeuralNetworkSettingsType,
+) => {
   const neuralNetwork = new brain.NeuralNetwork();
 
   const neuralNetworkJSON = readNeuralNetwork(module);
@@ -10,9 +14,9 @@ export const getNeuralNetwork = (module: BrainModuleEnum, onData?: (data: any[])
   if (neuralNetworkJSON) {
     neuralNetwork.fromJSON(neuralNetworkJSON);
   } else {
-    const data = onData ? onData(readData(module)) : readData(module);
+    const data = getDataBySettings(readData(module), settings);
 
-    neuralNetwork.train(data, {iterations: 2000, log: true});
+    neuralNetwork.train(data, {log: true});
 
     const newNeuralNetworkJSON = neuralNetwork.toJSON();
 
