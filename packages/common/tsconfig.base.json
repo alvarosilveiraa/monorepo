@@ -6,8 +6,8 @@
       "~/common/*": ["common/src/*"],
       "~/services/*": ["services/src/*"]
     },
-    "lib": ["esnext"],
-    "target": "es5",
+    "lib": ["DOM", "DOM.Iterable", "esnext"],
+    "target": "esnext",
     "module": "commonjs",
     "moduleResolution": "node",
     "allowJs": true,

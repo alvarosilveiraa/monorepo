@@ -1,4 +1,4 @@
 import {app} from '../config';
-import {postBetsPredictionController} from '../controllers';
+import {runNeuralNetworkBetsController} from '../controllers';
 
-app.post('/bets/prediction', postBetsPredictionController);
+app.post('/neural-network/bets', runNeuralNetworkBetsController);

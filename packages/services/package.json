@@ -7,6 +7,7 @@
     "dev": "yarn start",
     "dev:web": "yarn start",
     "dev:mobile": "yarn start",
+    "start:puppeteer": "dotenv -- ts-node src/use-cases/puppeteer/puppeteer.ts",
     "start": "dotenv -- nodemon src/server.ts",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
@@ -17,7 +18,9 @@
     "cors": "^2.8.5",
     "dotenv-cli": "^4.1.1",
     "express": "^4.17.1",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "puppeteer": "10.1.0",
+    "puppeteer-pro": "^1.4.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

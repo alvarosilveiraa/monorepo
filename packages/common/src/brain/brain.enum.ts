@@ -1,4 +1,5 @@
 export enum BrainModuleEnum {
-  Bets = 'bets',
-  English = 'english',
+  Bet = 'bet',
+  Englis = 'english',
+  Race = 'race',
 }
